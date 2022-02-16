@@ -1,0 +1,22 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "description": "Utils package",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iMagicKey/utils.git"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "author": "iMagicKey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iMagicKey/utils/issues"
+  },
+  "homepage": "https://github.com/iMagicKey/utils#readme"
+}
