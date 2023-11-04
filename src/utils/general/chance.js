@@ -1,4 +1,4 @@
-module.exports = function(percent) {
+export default function (percent) {
     if (Math.ceil(Math.random() * 100) <= percent) {
         return true
     }

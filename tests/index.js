@@ -1,4 +1,4 @@
-const utils = require('../index')
+import utils from '../src/index.js'
 
 // ARRAY
 console.log(utils.getRandArrayItem([1, 2, 3, 4, 5, 6, 7, 8, 9]))
