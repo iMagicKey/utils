@@ -1,4 +1,5 @@
 import getRandArrayItem from './utils/array/getRandArrayItem.js'
+import chunkArray from './utils/array/chunkArray.js'
 import getRandFloat from './utils/float/getRandFloat.js'
 import chance from './utils/general/chance.js'
 import generateBigId from './utils/general/generateBigId.js'
@@ -15,6 +16,7 @@ import getRandString from './utils/string/getRandString.js'
 
 export default {
     getRandArrayItem,
+    chunkArray,
     getRandFloat,
     chance,
     generateBigId,
