@@ -1,6 +1,5 @@
-export default function () {
-    return 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (e) {
-        let t = (16 * Math.random()) | 0
-        return ('x' === e ? t : (3 & t) | 8).toString(16)
-    })
+import getRandomBytes from './getRandomBytes.js'
+
+export default function generateId() {
+    return Array.from(getRandomBytes(16), (byte) => byte.toString(16).padStart(2, '0')).join('')
 }

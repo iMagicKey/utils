@@ -1,8 +1,16 @@
-export default function (min, max, decimalPoint = 5) {
-    let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    let numString = ''
-    for (let i = 0; i < decimalPoint; i++) {
-        numString += Math.floor(Math.random() * nums.length)
+export default function getRandFloat(min, max, decimalPoint = 5) {
+    if (!Number.isFinite(min) || !Number.isFinite(max)) {
+        throw new TypeError('min and max must be finite numbers')
     }
-    return parseFloat(`${this.getRandInteger(min, max)}.${numString})}`)
+
+    if (!Number.isInteger(decimalPoint) || decimalPoint < 0 || decimalPoint > 15) {
+        throw new RangeError('decimalPoint must be an integer from 0 to 15')
+    }
+
+    const lowerBound = Math.min(min, max)
+    const upperBound = Math.max(min, max)
+    const factor = 10 ** decimalPoint
+    const value = Math.random() * (upperBound - lowerBound) + lowerBound
+
+    return Math.round(value * factor) / factor
 }

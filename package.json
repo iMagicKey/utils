@@ -1,11 +1,30 @@
 {
     "name": "imagic-utils",
-    "version": "1.0.1",
-    "description": "Utils package",
-    "main": "src/index.js",
+    "version": "1.0.2",
+    "description": "Utility helpers for Node.js and browsers",
+    "main": "./src/index.js",
+    "browser": "./src/browser.js",
+    "exports": {
+        ".": {
+            "browser": "./src/browser.js",
+            "default": "./src/index.js"
+        },
+        "./browser": "./src/browser.js",
+        "./node": "./src/index.js",
+        "./package.json": "./package.json"
+    },
+    "sideEffects": false,
+    "files": [
+        "src",
+        "README.md",
+        "LICENSE",
+        "TODO.md"
+    ],
     "type": "module",
     "scripts": {
-        "test": "node ./tests/index.js"
+        "test": "node --test ./tests/**/*.test.js",
+        "deps:check": "npm outdated",
+        "deps:update": "npm update"
     },
     "repository": {
         "type": "git",
@@ -23,5 +42,13 @@
     "homepage": "https://github.com/iMagicKey/utils#readme",
     "engines": {
         "node": ">=18"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+    ],
+    "devDependencies": {
+        "chai": "^6.2.2"
     }
 }

@@ -1,20 +1,24 @@
-import os from 'os'
+import os from 'node:os'
 
-export default function () {
-    let networkInterfaces = os.networkInterfaces()
+function isIPv4Interface(networkInterface) {
+    return (networkInterface.family === 'IPv4' || networkInterface.family === 4) && !networkInterface.internal
+}
 
-    let localAddresses = []
-    for (let index in networkInterfaces) {
-        let interIPv4 = networkInterfaces[index]
-            .filter((inter) => {
-                return inter.family == 'IPv4' && inter.address != '127.0.0.1'
-            })
-            .map((inter) => {
-                return inter.address
-            })
+export default function getLocalAddress() {
+    const networkInterfaces = os.networkInterfaces()
+    const addresses = []
 
-        localAddresses = localAddresses.concat(interIPv4)
+    for (const interfaces of Object.values(networkInterfaces)) {
+        if (!Array.isArray(interfaces)) {
+            continue
+        }
+
+        for (const networkInterface of interfaces) {
+            if (isIPv4Interface(networkInterface)) {
+                addresses.push(networkInterface.address)
+            }
+        }
     }
 
-    return localAddresses[0]
+    return addresses[0]
 }

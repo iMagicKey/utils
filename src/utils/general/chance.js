@@ -1,7 +1,15 @@
-export default function (percent) {
-    if (Math.ceil(Math.random() * 100) <= percent) {
+export default function chance(percent) {
+    if (!Number.isFinite(percent)) {
+        throw new TypeError('percent must be a finite number')
+    }
+
+    if (percent <= 0) {
+        return false
+    }
+
+    if (percent >= 100) {
         return true
     }
 
-    return false
+    return Math.random() * 100 < percent
 }
